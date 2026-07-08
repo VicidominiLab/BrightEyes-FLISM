@@ -4,6 +4,7 @@ import math
 import os
 
 import h5py
+import matplotlib as mpl
 from matplotlib import colors
 from matplotlib.colors import hsv_to_rgb
 from matplotlib.pyplot import gca
@@ -994,7 +995,7 @@ def equalized_lifetime_tick_values(reference_lifetime, lifetime_bounds, weights=
 
 
 def _equal_luminance_colormap_array(colormap):
-    cmap = plt.get_cmap(colormap)
+    cmap = mpl.colormaps[colormap]
     colors = cmap(np.linspace(0.0, 1.0, cmap.N))[:, :3].copy()
     luminance = (299 * colors[:, 0] + 587 * colors[:, 1] + 114 * colors[:, 2]) / 1000.0
     max_luminance = np.max(luminance)
